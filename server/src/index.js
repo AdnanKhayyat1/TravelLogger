@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
   });
 });
 app.use('/api/logs', logs);
+app.use(middlewares.corsPassBy);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 app.listen(port, () => {

@@ -8,8 +8,40 @@ body {
   overflow: hidden;
   
 }
-
+.error {
+  color: #f05305;
+}
 .marker {
   stroke: #f8c102;
   transform: translate(-50%, -100%);
+}
+
+.popup {
+  max-width: 40vw;
+  padding: 1rem;
+}
+.popup img {
+  height: 200px;
+  width: auto;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  z-index: 3;
+}
+.popup button {
+  margin-top: 1rem;
+  height: 2rem;
+  width: 100%;
+  background-color: #f05305;
+  color: white;
+  border-style: none;
+}
+.popup button:hover {
+  background-color: #9e3500;
+
+}
+.entry-form label, .entry-form input, .entry-form textarea, .entry-form button{
+  margin: 0.5rem 0;
+  display: block;
+  width: 100%;
 }

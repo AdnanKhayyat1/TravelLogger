@@ -14,7 +14,12 @@ const errorHandler = (error, req, res, next) => {
   });
 };
 
+const corsPassBy = (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+};
+
 module.exports = {
   notFound,
   errorHandler,
+  corsPassBy,
 };

@@ -6,7 +6,7 @@ const LogEntry = require('../models/LogEntry');
 router.get('/', async (req, res, next) => {
   try {
     // eslint-disable-next-line no-console
-    const entries = await console.log(LogEntry.find());
+    const entries = await LogEntry.find();
     res.json(entries);
   } catch (error) {
     // eslint-disable-next-line no-undef
@@ -28,4 +28,18 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.delete('/id/:id', async (req, res, error, next) => {
+  const idToDelete = req.params.id;
+  console.log(idToDelete);
+  await LogEntry.findByIdAndDelete(idToDelete, () => {
+    if (error) {
+      console.log(error);
+      res.status(400);
+      next(error);
+    } else {
+      console.log('Successful Deletion');
+      res.status(200);
+    }
+  });
+});
 module.exports = router;
