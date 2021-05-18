@@ -22,6 +22,8 @@ const LogEntryForm = ({ location, onClose }) => {
     return(
         <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
             { error ? <h3 className="error">{error}</h3> : null}
+            <label htmlFor="apiKey">API Key</label>
+            <input name="apiKey" type="password" required {...register("apiKey")} />
             <label htmlFor="title">Title</label>
             <input name="title" required {...register("title")} />
             <label htmlFor="comment">Comments</label>
