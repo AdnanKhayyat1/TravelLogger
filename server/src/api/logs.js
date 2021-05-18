@@ -3,6 +3,9 @@ const { Router } = require('express');
 const router = Router();
 const LogEntry = require('../models/LogEntry');
 
+const {
+  API_KEY,
+} = process.env;
 router.get('/', async (req, res, next) => {
   try {
     // eslint-disable-next-line no-console
@@ -16,6 +19,11 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
+    console.log(API_KEY);
+    if (req.get('X-API-KEY') !== API_KEY) {
+      res.status(401);
+      throw new Error('UnAuthroized');
+    }
     const logEntry = new LogEntry(req.body);
     const createdEntry = await logEntry.save();
     res.json(createdEntry);
